@@ -1,0 +1,36 @@
+name: CI Workflow
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "web/**"
+
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./web
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependences
+        run: npm install
+      - name: Run Unit tests
+        run: npm run test
+
+  lint:
+    name: Run Linter
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./web
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependences
+        run: npm install
+      - name: Run linter
+        run: npx standard -v
