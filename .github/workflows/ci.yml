@@ -34,4 +34,4 @@ jobs:
       - name: Install dependences
         run: npm install
       - name: Run linter
-        run: npx standard -v
+        run: npx standard --fix
